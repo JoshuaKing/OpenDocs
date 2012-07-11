@@ -1,8 +1,5 @@
 <?php
-	$mysql_host = 'localhost';
-	$mysql_user = 'vierware_encdocs';
-	$mysql_pass = 'I$N$%IHDV(F*G$NKdfklaj45902h';
-	$mysql_db = 'vierware_encrypted';
+	require_once("mysql-details.php");
 	
 	function login($user, $pass) {
 		global $mysql_host, $mysql_user, $mysql_pass, $mysql_db;
