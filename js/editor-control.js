@@ -22,7 +22,7 @@ function view(docid, htmlDocId) {
 	}*/
 	
 	$.post(
-		"view.php",
+		"php/view.php",
 		{
 			"email": hemail,
 			"pass": hpass,
@@ -198,7 +198,7 @@ function save(htmlDocId) {
 		
 		// Submit document safely //
 		$.post(
-			"save.php",
+			"php/save.php",
 			{
 				"email": hemail,
 				"pass": hpass,
@@ -236,7 +236,7 @@ function save(htmlDocId) {
 		
 		// Submit document safely //
 		$.post(
-			"save.php",
+			"php/save.php",
 			{
 				"email": hemail,
 				"pass": hpass,
@@ -283,7 +283,7 @@ function deleteDoc(docid, img) {
 	
 	// Submit delete request //
 	$.post(
-		"deletedoc.php",
+		"php/deletedoc.php",
 		{
 			"email": hemail,
 			"pass": hpass,
@@ -310,7 +310,7 @@ function populate(htmlId) {
 	
 	// Request titles //
 	$.post(
-		"titles.php",
+		"php/titles.php",
 		{
 			"email": hemail,
 			"pass": hpass
@@ -438,7 +438,7 @@ function publicAccess(el) {
 	var public = ($(el).attr("checked") == "checked") ? "1" : "0";
 	
 	$.post(
-		"sharedoc.php",
+		"php/sharedoc.php",
 		{
 			"email": hemail,
 			"pass": hpass,

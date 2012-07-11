@@ -24,7 +24,7 @@
 				var hpass = new jsSHA(pass + email, "ASCII").getHash("SHA-512", "HEX");
 				
 				$.post(
-					"login.php",
+					"php/login.php",
 					{
 						"email": hemail,
 						"pass": hpass

@@ -3,7 +3,7 @@ function submitSignup(email, pass) {
 	var hpass = new jsSHA(pass + email, "ASCII").getHash("SHA-512", "HEX");
 	
 	$.post(
-		"signup.php",
+		"php/signup.php",
 		{
 			"email": hemail,
 			"pass": hpass
@@ -16,15 +16,6 @@ function submitSignup(email, pass) {
 	}).error(function(jqxhr) {
 		alert("Error signing up: " + jqxhr.status + " - " + jqxhr.responseText);
 	});
-	
-	/*var xhttp = new window.XMLHttpRequest();
-	xhttp.open("POST","signup.php",false);
-	xhttp.send("email=" + hemail + "&pass=" + hpass);
-	if (xhttp.status == 200) {
-		submitLogin(email, pass);
-	} else {
-		alert("Error signing up: " + jqxhr.status + " - " + jqxhr.responseText);
-	}*/
 }
 
 function attemptSignup() {
