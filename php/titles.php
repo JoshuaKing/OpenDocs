@@ -1,5 +1,6 @@
 <?php
 	require("login-function.php");
+	require("logging.php");
 	
 	// Send document to the database //
 	// Check if 'public' flag is set //
@@ -18,11 +19,16 @@
 	if (!isset(	$_POST['email']) || !isset($_POST['pass'])) {
 		header("HTTP/1.0 418 I'm a teapot");
 		echo "Are you trying to test this system..?";
+		logRequest(false); // Log Odd Behaviour
 		exit();
 	}
 	
 	// Check user is logged in //
 	$userid = login($_POST['email'], $_POST['pass']);
+	
+	// Log View Request //
+	logRequest($userid);
+	
 	if (!$userid) {
 		header("HTTP/1.0 418 I'm a teapot");
 		echo "You must be logged in to view a document online!";

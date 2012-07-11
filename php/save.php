@@ -1,5 +1,6 @@
 <?php
 	require("login-function.php");
+	require("logging.php");
 	
 	// Save a document to the database //
 	// - Owner ID
@@ -11,11 +12,16 @@
 	if (!isset(	$_POST['email']) || !isset($_POST['pass']) || !isset($_POST['doc']) || !isset($_POST['title'])) {
 		header("HTTP/1.0 418 I'm a teapot");
 		echo "Are you trying to test this system..?";
+		logRequest(false); // Log Odd Behaviour
 		exit();
 	}
 	
 	// Check user is logged in //
 	$userid = login($_POST['email'], $_POST['pass']);
+	
+	// Log Save Request //
+	logRequest($userid);
+	
 	if (!$userid) {
 		header("HTTP/1.0 418 I'm a teapot");
 		echo "You must be logged in to save a document online!";

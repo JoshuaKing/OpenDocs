@@ -10,6 +10,7 @@
 		<script src="js/editor-control.js"></script>
 		<script src="js/editor.js"></script>
 		<script src="js/hex.js"></script>
+		<script src="js/misc.js"></script>
 
 		<!-- Styling For Editor -->
 		<link rel="stylesheet" href="css/editor.css" type="text/css" />
@@ -26,14 +27,6 @@
 					randomString += charSet.substring(randomPoz,randomPoz+1);
 				}
 				return randomString;
-			}
-			
-			function logout() {
-				localStorage.setItem("key", "");
-				localStorage.setItem("email", "");
-				localStorage.setItem("pt-email", "");
-				localStorage.setItem("pass", "");
-				$(location).attr("href","./");
 			}
 			
 			function checkStatus() {

@@ -1,5 +1,7 @@
 <?php
 	require("login-function.php");
+	require("logging.php");
+	
 	// Check user against database //
 	// - Email (hash)
 	// - Password (hash)
@@ -13,6 +15,10 @@
 	
 	// Run loggin
 	$loggedin = login($_POST['email'], $_POST['pass']);
+	
+	// Log Login Request //
+	logRequest($loggedin);
+	
 	if ($loggedin) {
 		echo "Logged in successfully.";
 	} else {

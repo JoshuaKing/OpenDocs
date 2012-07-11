@@ -1,14 +1,20 @@
 <?php
 	require("login-function.php");
+	require("logging.php");
 	
 	// Add user to database //
 	// - Email (hash)
 	// - Password (hash)
 	
+	// Log Delete Request //
+	logRequest(false);
+	
+	
 	// Check if email/password has been supplied //
 	if (!isset(	$_POST['email']) || !isset($_POST['pass'])) {
 		header("HTTP/1.0 418 I'm a teapot");
 		echo "Are you trying to test this system..?";
+		logRequest(false); // Log Odd Behaviour
 		exit();
 	}
 	
@@ -49,6 +55,10 @@
    
    $stmt->bind_param("ss", $_POST['email'], $_POST['pass']);
    $stmt->execute();
+   
+   // Log Delete Request //
+   logRequest($stmt->insert_id);
+	
    
    // Close connections/statements //
    $stmt->close();

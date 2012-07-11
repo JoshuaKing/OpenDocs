@@ -1,5 +1,6 @@
 <?php
 	require("login-function.php");
+	require("logging.php");
 	
 	// Delete a document from the database //
 	// Check if user is owner of document
@@ -15,11 +16,16 @@
 	if (!isset(	$_POST['email']) || !isset($_POST['pass']) || !isset($_POST['docid'])) {
 		header("HTTP/1.0 418 I'm a teapot");
 		echo "Are you trying to test this system..?";
+		logRequest(false); // Log Odd Behaviour
 		exit();
 	}
 	
 	// Check user is logged in //
 	$userid = login($_POST['email'], $_POST['pass']);
+	
+	// Log Delete Request //
+	logRequest($userid);
+	
 	if (!$userid) {
 		header("HTTP/1.0 418 I'm a teapot");
 		echo "You must be logged in delete a document!";

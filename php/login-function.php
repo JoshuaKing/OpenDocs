@@ -27,8 +27,6 @@
 	    $stmt->fetch();
 	    $stmt->close();
 	    if (!$rows) {
-			//header("HTTP/1.0 418 I'm a teapot");
-			//echo "User either does not exist, or password is incorrect.";
 			$mysqli->close();
 			return false;
 		}

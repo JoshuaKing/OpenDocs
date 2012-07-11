@@ -1,5 +1,6 @@
 <?php
 	require("login-function.php");
+	require("logging.php");
 	
 	// Send document to the database //
 	// Check if 'public' flag is set //
@@ -18,17 +19,15 @@
 	if (!isset(	$_POST['email']) || !isset($_POST['pass']) || !isset($_POST['docid'])) {
 		header("HTTP/1.0 418 I'm a teapot");
 		echo "Are you trying to test this system..?";
+		logRequest(false); // Log Odd Behaviour
 		exit();
 	}
 	
-	// Check user is logged in //
+	// Check User is logged in - User does not have to be logged in to view public docs //
 	$userid = login($_POST['email'], $_POST['pass']);
-	// User does not have to be logged in to view public docs //
-	/*if (!$userid) {
-		header("HTTP/1.0 418 I'm a teapot");
-		echo "You must be logged in to view a document online!";
-		exit();
-	}*/
+	
+	// Log View Request //
+	logRequest($userid);
 	
 	// Connect to database //
 	$mysqli = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);

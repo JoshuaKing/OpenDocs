@@ -10,6 +10,7 @@
 		<script src="js/editor-control.js"></script>
 		<script src="js/editor.js"></script>
 		<script src="js/hex.js"></script>
+		<script src="js/misc.js"></script>
 		
 		<!-- Styling For Editor -->
 		<link rel="stylesheet" href="css/editor-header.css" type="text/css" />
@@ -25,14 +26,6 @@
 					randomString += charSet.substring(randomPoz,randomPoz+1);
 				}
 				return randomString;
-			}
-			
-			function logout() {
-				localStorage.setItem("key", "");
-				localStorage.setItem("email", "");
-				localStorage.setItem("pt-email", "");
-				localStorage.setItem("pass", "");
-				$(location).attr("href","./");
 			}
 			
 			function checkStatus() {
@@ -57,6 +50,7 @@
 					
 					// Update appearance //
 					populate("doclist");
+					$("#doclist").css("margin-top", "5px");
 					$("#doclist").show();
 					
 					return true;
