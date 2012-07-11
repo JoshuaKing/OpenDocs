@@ -1,0 +1,49 @@
+/* CSS for editor */
+#pane {
+	background-color: white;
+	width: 210mm; /*60%;*/
+	margin-top: 185px;
+	margin-left: 30%;
+	margin-right: 10%;
+	min-height: 100%;
+	margin-bottom: 100px;
+}
+
+#doc {
+	padding: 5%;
+	min-height: 85%;
+	height: auto;
+}
+
+#doc h1 {
+	font-size: 32px;
+}
+
+#doc h2 {
+	font-size: 24px;
+}
+
+#doc h3 {
+	color: #777;
+}
+
+#doc div {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+/* CSS should make each list 1.1, 1.2 etc, but doesn't appear
+   to work with dynamic content as yet.
+#doc ol {
+	counter-reset: section;
+	list-style-type: none;
+}
+
+#doc ol li {
+	counter-increment: section;
+}
+
+#doc ol li:before {
+	content: counters(section, ".") ". ";
+}
+*/

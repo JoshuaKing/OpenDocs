@@ -1,0 +1,192 @@
+<html>
+	<head>
+		<script src="js/jquery-1.7.1.min.js"></script>
+		
+		<!-- Security Scripts -->
+		<script src="js/sha/sha512.js"></script>
+		<script src="js/js-aes.js"></script>
+		
+		<!-- Document Editing Scripts -->
+		<script src="js/editor-control.js"></script>
+		<script src="js/editor.js"></script>
+		
+		<!-- Styling For Editor -->
+		<link rel="stylesheet" href="css/editor.css" type="text/css" />
+		<link rel="stylesheet" href="css/editor-header.css" type="text/css" />
+		<link rel="stylesheet" href="css/nav.css" type="text/css" />
+		<link rel="stylesheet" href="css/signup.css" type="text/css" />
+		
+		<script>
+			function randomString(len, charSet) {
+				charSet = charSet || "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]\{}|;':\";,./<>?`~";
+				var randomString = '';
+				for (var i = 0; i < len; i++) {
+					var randomPoz = Math.floor(Math.random() * charSet.length);
+					randomString += charSet.substring(randomPoz,randomPoz+1);
+				}
+				return randomString;
+			}
+			
+			function login() {
+				var email = $("#login-email").val();
+				var pass = $("#login-password").val();				
+				submitLogin(email, pass);
+			}
+			
+			function submitLogin(email, pass) {
+				var hemail = new jsSHA(email, "ASCII").getHash("SHA-512", "HEX");
+				var hpass = new jsSHA(pass + email, "ASCII").getHash("SHA-512", "HEX");
+				
+				$.post(
+					"login.php",
+					{
+						"email": hemail,
+						"pass": hpass
+					}
+				).success(function(data, text, jqxhr) {
+					alert(jqxhr.responseText);
+					
+					// Store details //
+					localStorage.setItem("key", pass + email);	// For decrypting each document's key
+					localStorage.setItem("email", hemail);		// For easy authentication usage
+					localStorage.setItem("pt-email", email);	// For "logged in as xxx" usage
+					localStorage.setItem("pass", hpass);		// For submitting on each request
+					
+					// Update the 'logged in as' code //
+					checkStatus();
+					//$(location).attr("href", "home.html");
+				}).error(function(jqxhr) {
+					alert("Error logging in: " + jqxhr.status + " - " + jqxhr.responseText);
+				});
+			}
+			
+			function logout() {
+				localStorage.setItem("key", "");
+				localStorage.setItem("email", "");
+				localStorage.setItem("pt-email", "");
+				localStorage.setItem("pass", "");
+				window.location.reload();
+			}
+			
+			function checkStatus() {
+				// Mark user as logged in if details are currently stored in localStorage //
+				if (localStorage["key"] != "" && localStorage["email"] != ""
+						&& localStorage["pass"] != "" && localStorage["pt-email"] != "") {
+					// User is logged in //
+					$("#login").hide();
+					$("#logged-in-as").show();
+					
+					// Show 'logged in as ___' code //
+					var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+					if (localStorage["email"].search(emailRegEx) == -1) {
+						$("#logged-in-as").html("<div>Logged in.</div>");
+						$("#logged-in-as").html("<div>Logged in as " + localStorage["pt-email"] + ".</div>");
+					} else {
+						$("#logged-in-as").html("<div>Logged in as " + localStorage["pt-email"] + ".</div>");
+					}
+					$("#logged-in-as").append("<input type='button' onclick='logout();' value='Logout'/>");
+					
+					// Update appearance //
+					populate("doclist");
+					$("#doclist").show();
+					$("#pane").hide();
+					$("#doctitle").hide();
+					$("nav").show();
+					
+					return true;
+				} else {
+					// User is not logged in //
+					$("#logged-in-as").hide();
+					$("#login").show();
+					
+					// Update appearance //
+					$("#doclist").hide();
+					$("#pane").hide();
+					$("#doctitle").hide();
+					$("nav").hide();
+					
+					return false;
+				}
+			}
+			
+			$(document).ready(function() {		
+				checkStatus();
+				saveChanges("", "", false);
+				$("#doc").keydown(documentKeyDown);
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div id="locktop">
+			<header>
+				<div id="logged-in-as">Logged in as...  Logout</div>
+				<h1>Freshte.ch Docs</h1>
+				<span id="motto">A safe and private place to store your documents!</span>
+			</header>
+			
+			<!-- Tools box -->
+			<nav>
+				<img src="editor-images/bold.png" onclick="document.execCommand('bold',false,null);"/>
+				<img src="editor-images/italic.png" onclick="document.execCommand('italic',false,null);"/>
+				<img src="editor-images/underline.png" onclick="document.execCommand('underline',false,null);"/>
+				<span>&nbsp;&nbsp;</span>
+				<img src="editor-images/strikethrough.png" onclick="document.execCommand('strikethrough',false,null);"/>
+				<img src="editor-images/superscript.png" onclick="document.execCommand('superscript',false,null);"/>
+				<img src="editor-images/subscript.png" onclick="document.execCommand('subscript',false,null);"/>
+				<span>&nbsp;&nbsp;</span>
+				<img src="editor-images/bullets.png" onclick="document.execCommand('insertunorderedlist',false,null);"/>
+				<img src="editor-images/numbers.png" onclick="document.execCommand('insertorderedlist',false,null);"/>
+				<span>&nbsp;&nbsp;</span>
+				<span id="font-selection">
+					<span style="display: none">
+						<input type="button" style="font-family: Helvetica,Arial,sans-serif;" onclick="changeFont(this);" value="Helvetica"></input>
+						<input type="button" style="font-family: Arial Black,Gadget,sans-serif;" onclick="changeFont(this);" value="Arial Black"></input>
+						<input type="button" style="font-family: Comic Sans MS,cursive" onclick="changeFont(this);" value="Comic Sans"></input>
+						<input type="button" style="font-family: Courier,monospace;" onclick="changeFont(this);" value="Courier New"></input>
+						<input type="button" style="font-family: Impact,Georgia,serif;" onclick="changeFont(this);" value="Impact"></input>
+						<input type="button" style="font-family: Monaco,Lucida Console,monospace;" onclick="changeFont(this);" value="Monaco"></input>
+						<input type="button" style="font-family: Lucida Sans Unicode,Lucida Grande,sans-serif;" onclick="changeFont(this);" value="Lucida Sans"></input>
+						<input type="button" style="font-family: Palatino Linotype,Book Antiqua,Palatino,serif;" onclick="changeFont(this);" value="Palatino Linotype"></input>
+						<input type="button" style="font-family: Tahoma,Geneva,sans-serif;" onclick="changeFont(this);" value="Tahoma"></input>
+						<input type="button" style="font-family: Times New Roman,Times,serif;" onclick="changeFont(this);" value="Times New Roman"></input>
+						<input type="button" style="font-family: Trebuchet MS,Helvetica,sans-serif;" onclick="changeFont(this);" value="Trebuchet MS"></input>
+						<input type="button" style="font-family: Verdana,Geneva,sans-serif;" onclick="changeFont(this);" value="Verdana"></input>
+					</span>
+					<input type="button" onclick="selectFont('font-selection');" value="Font Family"></input>
+				</span>
+				<span>&nbsp;&nbsp;</span>
+				<img src="editor-images/h1.png" onclick="document.execCommand('formatBlock',false, 'h1');"/>
+				<img src="editor-images/h2.png" onclick="document.execCommand('formatBlock',false, 'h2');"/>
+				<img src="editor-images/h3.png" onclick="document.execCommand('formatBlock',false, 'h3');"/>
+				<span>&nbsp;&nbsp;</span>
+				<img src="editor-images/indent.png" onclick="document.execCommand('indent',false, null);"/>
+				<img src="editor-images/outdent.png" onclick="document.execCommand('outdent',false, null);"/>
+				<!-- headings, font/background color, font family, font size, text align/justification, links, images -->
+				<span id="savestatus">-</span>
+				<ul id="doclist">
+					<li>Replace with just 'add doc'</li>
+					<li>doc2</li>
+				</ul>
+			</nav>
+			<input id="doctitle" value="Untitled Document"></input>
+		</div>
+		<div id="pane"><div id="doc" contentEditable></div></div>
+		
+		<div id="login">
+			<form id="login-details">
+				<div>Login</div>
+				<input id="login-email" placeholder="Email Address"></input>
+				<input id="login-password" placeholder="Enter password"></input>
+				<input class="button" id="login-button" type="submit" value="Log In" onclick="login(); return false;"></input>
+			</form>
+			<form id="signup-details">
+				<div>Signup</div>
+				<input type="email" id="signup-username" placeholder="Email Address"/>
+				<input type="password" id="signup-password" placeholder="Password"/>
+				<span>Note: We do not store your email or password in plain text (they are hashed with SHA-512)</span>
+				<input class="button" type="submit" value="Sign Up" onclick="attemptSignup();"/>
+			</form>
+		</div>
+	</body>
+</html>

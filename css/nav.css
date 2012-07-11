@@ -1,0 +1,339 @@
+/* CSS for the text tools bar */
+nav {
+	display: none;
+	height: 42px;
+	width: 100%;
+	background-color: #eee;
+	border-bottom: 1px solid #ddd;
+	padding-left: 10px;
+}
+
+nav img {
+	margin-top: 4px;
+	cursor: pointer;
+	padding-top: 1px;
+}
+
+nav .enabledFeature {
+	background: #ddd;
+	border-style: inset;
+}
+
+nav>input {
+	display: inline-block;
+	font-family: Times;
+	font-size: 22px;
+	line-height: 30px;
+	width: 30px;
+	border: 1px solid #ccc;
+	position: relative;
+	text-align: center;
+	top: -10px;
+	background: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+nav>#bold {
+	font-weight: bold;
+}
+
+nav>#italic {
+	font-style: italic;
+}
+
+nav>#underline {
+	text-decoration: underline;
+}
+
+nav>#strikethrough {
+	text-decoration: line-through;
+}
+
+#font-colour {
+	display: inline-block;
+	position: relative;
+	top: -18px;
+	cursor: pointer;
+}
+
+#font-colour>input {
+	cursor: pointer;
+	border: none;
+	width: 30px;
+	height: 30px;
+	padding-left: 10px;
+	background: black;
+	border: 1px solid #ddd;
+}
+
+#font-colour>span {
+	position: absolute;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	margin-top: 32px;
+	border: 1px solid #ddd;
+	background: #eee;
+	width: 320px;
+	padding-bottom: 5px;
+	list-style: none;
+	z-index: 10;
+}
+
+#font-colour>span>input {
+	margin: 0;
+	margin-left: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	display: inline-block;
+	border: none;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #ddd;
+	cursor: pointer;
+}
+
+#font-size {
+	display: inline-block;
+	line-height: 32px;
+	position: relative;
+	top: -10px;
+	cursor: pointer;
+}
+
+#font-size>input {
+	cursor: pointer;
+	border: none;
+	width: 120px;
+	padding-left: 10px;
+	font-size: 20px;
+	text-align: left;
+	background: none;
+	border: 1px solid #ddd;
+}
+
+#font-size>span {
+	position: absolute;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	margin-top: 32px;
+	border: 1px solid #ddd;
+	width: 120px;
+	list-style: none;
+	background: #eee;
+	z-index: 10;
+}
+
+#font-size>span>input {
+	padding-left: 10px;
+	cursor: pointer;
+	display: block;
+	border: none;
+	width: 100%;
+	background: none;
+	cursor: pointer;
+}
+
+#font-selection {
+	display: inline-block;
+	font-size: 20px;
+	line-height: 32px;
+	position: relative;
+	top: -10px;
+	cursor: pointer;
+}
+
+#font-selection>input {
+	cursor: pointer;
+	border: none;
+	font-size: 20px;
+	width: 200px;
+	padding-left: 10px;
+	text-align: left;
+	background: none;
+	border: 1px solid #ddd;
+}
+
+#font-selection>span {
+	position: absolute;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	margin-top: 32px;
+	border: 1px solid #ddd;
+	width: 200px;
+	list-style: none;
+	background: #eee;
+	z-index: 10;
+}
+
+#font-selection>span>input {
+	padding-left: 10px;
+	cursor: pointer;
+	display: block;
+	border: none;
+	font-size: 20px;
+	width: 100%;
+	background: none;
+	cursor: pointer;
+}
+
+#doctitle {
+	position: absolute;
+	text-align: center;
+	margin-left: 30%;
+	width: 210mm;
+	height: 30px;
+	font-size: 20px;
+	border: 1px solid #ddd;
+	background-color: #eee;
+	border-top: none;
+	opacity: 0.6;
+}
+
+#doctitle:hover {
+	background-color: #ACF;
+	opacity: 1;
+}
+
+#savestatus {
+	float: right;
+	border: 1px solid #ddd;
+	margin-right: 20px;
+	line-height: 32px;
+	width: 160px;
+	text-align: center;
+}
+
+#public {
+	float: right;
+	margin-top: 10px;
+}
+
+#doclist {
+	position: fixed;
+	float: left;
+	height: 100%;
+	background: #eee;
+	border-right: 1px solid #ccc;
+	margin-top: 5px;
+	margin-left: -10px;
+	padding: 10px;
+	padding-top: 30px;
+	width: 20%;
+	opacity: 0.3;
+	list-style: none;
+}
+
+#doclist:hover {
+	opacity: 1;
+}
+
+#doclist li {
+	width: 95%;
+	cursor: pointer;
+	line-height: 30px;
+	border: 1px solid #eee;
+	border-bottom: 1px solid #ddd;
+	padding: 5px;
+}
+
+#doclist li:hover {
+	background: #ddd;
+	border: 1px solid #59F;
+}
+
+#doclist li a {
+	display: inline-block;
+	width: 100%;
+	font-style: none;
+	text-decoration: none;
+}
+
+#doclist li img {
+	float: right;
+	padding: 2px;
+	border: 1px solid transparent;
+	position: absolute;
+	margin-left: -23px;
+}
+
+#doclist li img:hover {
+	border: 1px solid #59F;
+}
+
+#doclist #new-document-li {
+	color: #bbb;
+	text-align: center;
+	font-weight: bold;
+}
+
+#new-document-hint {
+	position: absolute;
+	display: block;
+	margin-top: 30px;
+	width: 500px;
+	top: 150px;
+	left: 23%;
+	background: #ddd;
+}
+
+#new-document-hint .rotated-square {
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	background: #ddd;
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: relative;
+	left: -15px;
+	top: 8px;
+}
+
+#new-document-hint .new-hint {
+	margin-left: 20px;
+	top: -15px;
+	position: relative;
+	font-size: 1.5em;
+	color: #59F;
+}
+
+#new-document-hint .close {
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+	position: relative;
+	top: -20;
+	font-size: 16px;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	right: 10px;
+	border: 1px solid transparent;
+	font-family: Helvetica;
+}
+
+#new-document-hint .close:hover {
+	border: 1px solid #59F;
+}
+
+#new-document-hint div {
+	margin-left: 20px;
+	margin-right: 20px;
+	color: #666;
+	margin-bottom: 30px;
+}
+
+#doclist li #new-document {
+	line-height: 22px;
+	width: 25px;
+	height: 25px;
+	font-size: 21px;
+	border: 3px solid #bbb;
+	border-radius: 50%;
+	display: inline-block;
+}	

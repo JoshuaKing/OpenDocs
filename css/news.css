@@ -1,0 +1,38 @@
+@font-face {
+	font-family: GeoSans;
+	src: url("../fonts/GeosansLight.ttf") format('truetype');
+}
+
+#news {
+	width: 60%;
+	margin-top: 185px;
+	margin-left: 30%;
+	margin-right: 10%;
+	margin-bottom: 100px;
+}
+
+#news .quarter {
+	display: inline-block;
+	width: 43%;
+	margin: 2%;
+	min-height: 250px;
+	border: solid 2px #59F;
+	background-color: #eee;
+	font-family: "GeoSans", HelveticaNeue, Helvetica, Arial;
+	border-radius: 5px;
+	padding: 10px;
+	float: left;
+	font-size: 18px;
+	position: relative;
+}
+
+#news .quarter header {
+	font-size: 1.2em;
+	color: #59F;
+	margin-bottom: 10px;
+}
+
+#news .quarter article img {
+	width: 70%;
+	margin-left: 15%;
+}

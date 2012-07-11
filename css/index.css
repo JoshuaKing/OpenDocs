@@ -1,0 +1,116 @@
+@font-face {
+	font-family: GeoSans;
+	src: url("../fonts/GeosansLight.ttf") format('truetype');
+}
+
+@font-face {
+	font-family: Evolution;
+	src: url("../fonts/evolution-paulw.ttf") format('truetype');
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background-color: #333;
+}
+
+header {
+	height: 100px;
+	font-size: 64px;
+	color: #59f;
+	text-align: center;
+	line-height: 100px;
+	font-family: "GeoSans", HelveticaNeue, Helvetica, Arial;
+}
+
+header span {
+	display: inline-block;
+	width: 33.33%;
+	height: 5px;
+	float: left;
+}
+
+body section {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	background: #eee;
+}
+
+body section img {
+	margin-left: 10%;
+	width: 20%;
+	height: auto;
+}
+
+body section span {
+	display: inline-block;
+	width: 20%;
+	margin-top: 50px;
+	margin-left: 10%;
+	text-align: center;
+	font-size: 24;
+	font-family: "GeoSans", HelveticaNeue, Helvetica, Arial;
+}
+
+body section .description {
+	color: #ccc;
+	text-align: justify;
+	width: 25%;
+	margin-left: 5%;
+}
+
+#login>form {
+	display: block;
+	width: 33.33%;
+	height: 300px;
+	float: left;
+	color: white;
+	font-family: "GeoSans", HelveticaNeue, Helvetica, Arial;
+}
+
+#login>form>div{
+	text-align: center;
+	font-size: 2em;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#login>form>input {
+	width: 80%;
+	margin-right: 10%;
+	margin-left: 10%;
+	font-size: 1.2em;
+}
+
+#login>form>span {
+	width: 80%;
+	margin-right: 10%;
+	margin-left: 10%;
+	font-size: 0.8em;
+	display: block;
+}
+
+#login-details {
+	background-color: #6443D5;
+}
+
+#password-strength-form {
+	background-color: #D7D86F;
+}
+
+#signup-details {
+	background-color: #00C942;
+}
+
+#password-strength-form>.indicator {
+	line-height: 1.4em;
+	font-size: 1.4em;
+	text-align: left;
+	margin-left: 10%;
+}
+
+.indicator img {
+	height: 1em;
+	padding-top: 0.1em;
+	margin-right: 20px;
+}
