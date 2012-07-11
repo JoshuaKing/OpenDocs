@@ -28,14 +28,14 @@
 	$mysqli = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
 	if(mysqli_connect_errno()) {
 		header("HTTP/1.0 500 Internal Server Error");
-		echo "SQL Error 1 encounted.";
+		echo "SQL Error 1 encountered.";
 		exit();
 	}
 	
 	$stmt = $mysqli->prepare("UPDATE documents SET public=? WHERE id=? AND userid=? LIMIT 1");
 	if(!$stmt) {
 		header("HTTP/1.0 500 Internal Server Error");
-		echo "SQL Error 2 encounted.";
+		echo "SQL Error 2 encountered.";
 		$mysqli->close();
 		exit();
     }

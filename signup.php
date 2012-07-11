@@ -16,7 +16,7 @@
 	$mysqli = new mysqli($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
 	if(mysqli_connect_errno()) {
 	  header("HTTP/1.0 500 Internal Server Error");
-	  echo "SQL Error 1 encounted.";
+	  echo "SQL Error 1 encountered.";
       exit();
    }
    
@@ -24,7 +24,7 @@
    $stmt = $mysqli->prepare("SELECT COUNT(*) FROM users WHERE email=?");
    if(!$stmt) {
 	  header("HTTP/1.0 500 Internal Server Error");
-	  echo "SQL Error 2 encounted.";
+	  echo "SQL Error 2 encountered.";
       exit();
    }
    
@@ -43,7 +43,7 @@
    $stmt = $mysqli->prepare("INSERT INTO users SET email=?, password=?");
    if(!$stmt) {
 	  header("HTTP/1.0 500 Internal Server Error");
-	  echo "SQL Error 3 encounted.";
+	  echo "SQL Error 3 encountered.";
       exit();
    }
    

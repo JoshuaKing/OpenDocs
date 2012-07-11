@@ -22,7 +22,7 @@
 	$userid = login($_POST['email'], $_POST['pass']);
 	if (!$userid) {
 		header("HTTP/1.0 418 I'm a teapot");
-		echo "You must be logged in to save a document online!";
+		echo "You must be logged in delete a document!";
 		exit();
 	}
 	
