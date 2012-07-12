@@ -334,11 +334,11 @@ function populate(htmlId) {
 			var title = Aes.Ctr.decrypt(result[2], docKey, 256);
 			
 			title = title.replace(new RegExp("<[^>]*>", 'g'),"");
-			docs.append("<li><a href=\"view.html?" + id + "#" + a2hex(docKey) + "\">" + title + "</a><img data-doctitle='" + title + "' src=\"editor-images/cross_grey.png\" onclick=\"deleteDoc(" + id + ", this);\" /></li>");
+			docs.append("<li><a href=\"view.php?" + id + "#" + a2hex(docKey) + "\">" + title + "</a><img data-doctitle='" + title + "' src=\"editor-images/cross_grey.png\" onclick=\"deleteDoc(" + id + ", this);\" /></li>");
 		}
 		
 		// Add 'new document' option //
-		docs.append("<li id=\"new-document-li\"><a href=\"new.html\"><span id='new-document'>+</span></a></li>");
+		docs.append("<li id=\"new-document-li\"><a href=\"new.php\"><span id='new-document'>+</span></a></li>");
 		if (response.length == 1) {
 			// No documents created - could be a new user //
 			$('body').append("<div id='new-document-hint'><span class='rotated-square'>&nbsp;</span><span class='close' onclick=\"closeNewHint();\">x</span></div>");

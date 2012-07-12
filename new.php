@@ -91,7 +91,7 @@
 		<div id="locktop">
 			<header>
 				<div id="logged-in-as">Please Login.</div>
-				<a href="./home.html">Freshte.ch Docs</a><br/>
+				<a href="./home.php">Freshte.ch Docs</a><br/>
 				<span style="background-color:#6443D5">&nbsp;</span>
 				<span style="background-color:#D7D86F">&nbsp;</span>
 				<span style="background-color:#00C942">&nbsp;</span>

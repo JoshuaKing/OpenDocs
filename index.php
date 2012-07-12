@@ -38,7 +38,7 @@
 					
 					// Update the 'logged in as' code //
 					//checkStatus();
-					$(location).attr("href", "home.html");
+					$(location).attr("href", "home.php");
 				}).error(function(jqxhr) {
 					alert("Error logging in: " + jqxhr.status + " - " + jqxhr.responseText);
 				});
@@ -53,7 +53,7 @@
 				// Mark user as logged in if details are currently stored in localStorage //
 				if (key != null && email != null && hpass != null && hemail != null) {
 					// User is logged in //
-					$(location).attr("href", "home.html");
+					$(location).attr("href", "home.php");
 				}
 			}
 			
