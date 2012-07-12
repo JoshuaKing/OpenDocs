@@ -5,14 +5,16 @@
 	margin-top: 185px;
 	margin-left: 30%;
 	margin-right: 10%;
-	min-height: 100%;
+	min-height: 297mm;
 	margin-bottom: 100px;
 }
 
 #doc {
-	padding: 5%;
-	min-height: 85%;
-	height: auto;
+	padding-left: 1.5cm;
+	padding-top: 2cm;
+	padding-bottom: 2cm;
+	padding-right: 1.5cm;
+	min-height: 267mm;
 }
 
 #doc h1 {

@@ -93,7 +93,8 @@
 				<header style="text-align: center;">Developers</header>
 				<article>
 					This project is available on Github at:<br/>
-					<a href="https://github.com/Vierware"><img src="images/Octocat.png"/></a>
+					<a href="https://github.com/Vierware/OpenDocs"><img src="images/Octocat.png"/></a>
+					<div style="text-align: center;"><a href="https://github.com/Vierware/OpenDocs">Github - OpenDocs</a></div>
 				</article>
 			</span>
 			

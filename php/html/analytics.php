@@ -2,8 +2,7 @@
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-19917902-4']);
-  _gaq.push(['_setDomainName', '.freshte.ch']);
+  _gaq.push(['_setAccount', 'UA-19917902-5']);
   _gaq.push(['_trackPageview']);
 
   (function() {

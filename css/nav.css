@@ -6,6 +6,7 @@ nav {
 	background-color: #eee;
 	border-bottom: 1px solid #ddd;
 	padding-left: 10px;
+	overflow-x: hidden;	/* fix to look nicer - but may be a problem if browser window is too small for many features */
 }
 
 nav img {
